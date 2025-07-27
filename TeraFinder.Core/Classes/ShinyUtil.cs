@@ -29,23 +29,27 @@ namespace TeraFinder.Core
         /// <summary>
         /// Forces the PID to be shiny or not shiny for the given id32 and shiny Xor (0 = Square, 1 = Star).
         /// </summary>
-        public static void ForceShinyState(bool shiny, ref uint pid, uint id32, uint xor)
+public static void ForceShinyState(bool shiny, ref uint pid, uint id32, uint shinyType)
+{
+    uint tid = id32 & 0xFFFF;
+    uint sid = (id32 >> 16) & 0xFFFF;
+    uint low = pid & 0xFFFF;
+    uint pidXor = shiny ? (shinyType & 0x1) : 0x10; // Ensure shinyType is 0 or 1
+
+    uint high = (low ^ tid ^ sid ^ pidXor) & 0xFFFF;
+    pid = (high << 16) | low;
+
+    // If not shiny, ensure xor >= 16 with more reliable approach
+    if (!shiny)
+    {
+        uint currentXor = GetShinyXor(pid, id32);
+        if (currentXor < 16)
         {
-            uint tid = id32 & 0xFFFF;
-            uint sid = (id32 >> 16) & 0xFFFF;
-            uint low = pid & 0xFFFF;
-            uint pidXor = shiny ? xor : 0x10; // 0 for Square, 1 for Star, >=16 for not shiny
-
-            uint high = (low ^ tid ^ sid ^ pidXor) & 0xFFFF;
-            pid = (high << 16) | low;
-
-            // If not shiny, ensure xor >= 16
-            if (!shiny && GetShinyXor(pid, id32) < 16)
-            {
-                // Flip a bit to break shiny status
-                pid ^= 0x10000000;
-            }
+            // Modify upper bits more systematically
+            pid = (pid & 0xFFFF) | ((currentXor + 16) << 16);
         }
+    }
+}
 
 
         public static bool GetIsShiny6(uint id32, uint pid)
