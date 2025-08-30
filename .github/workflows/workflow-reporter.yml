@@ -1,0 +1,24 @@
+workflowStat: true
+jobStat: true
+salutation: Hello
+body: The continuous integration workflow has failed. Please check the below details and resolve the issues.
+
+workflows:
+  - name: CI
+    jobs:
+      - name: build
+        steps:
+          - name: Install Dependencies
+            report: Check if syntax in the dependency file is correct.
+          - name: Check Code Formatting
+            report: The code formatting check has failed. Run `flutter format --set-exit-if-changed lib` and remove the formatting issue.
+      - name: test
+        steps:
+          - name: Run Unit Tests
+            report: Some unit tests have failed. Please review the test output and fix the failing tests.
+  - name: Deploy
+    jobs:
+      - name: deploy-to-prod
+        steps:
+          - name: Deploy
+            report: Deployment failed. Ensure all secrets are set and the server is reachable.
