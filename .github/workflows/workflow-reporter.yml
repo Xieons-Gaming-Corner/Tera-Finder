@@ -1,7 +1,38 @@
-workflowStat: true
-jobStat: true
-salutation: Hello
-body: The continuous integration workflow has failed. Please check the below details and resolve the issues.
+# .github/workflows/workflow-reporter.yml
+
+name: Workflow Reporter
+on:
+  workflow_run:
+    workflows: [CI, Deploy]
+    types: [completed]
+permissions:
+  pull-requests: write
+jobs:
+  report:
+    if: ${{ github.event.workflow_run.conclusion != 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post failure report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const salutation = "Hello";
+            const body = "The continuous integration workflow has failed. Please check the below details and resolve the issues.";
+            const run = context.payload.workflow_run;
+            const prs = run.pull_requests || [];
+            const text = `${salutation}\n\n${body}\n\nWorkflow: ${run.name}\nConclusion: ${run.conclusion}\nRun: ${run.html_url}`;
+            if (prs.length) {
+              for (const pr of prs) {
+                await github.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: text
+                });
+              }
+            } else {
+              core.info("No associated pull requests to comment on.");
+            }
 
 workflows:
   - name: CI
