@@ -1,0 +1,55 @@
+# .github/workflows/workflow-reporter.yml
+
+name: Workflow Reporter
+on:
+  workflow_run:
+    workflows: [CI, Deploy]
+    types: [completed]
+permissions:
+  pull-requests: write
+jobs:
+  report:
+    if: ${{ github.event.workflow_run.conclusion != 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post failure report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const salutation = "Hello";
+            const body = "The continuous integration workflow has failed. Please check the below details and resolve the issues.";
+            const run = context.payload.workflow_run;
+            const prs = run.pull_requests || [];
+            const text = `${salutation}\n\n${body}\n\nWorkflow: ${run.name}\nConclusion: ${run.conclusion}\nRun: ${run.html_url}`;
+            if (prs.length) {
+              for (const pr of prs) {
+                await github.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  body: text
+                });
+              }
+            } else {
+              core.info("No associated pull requests to comment on.");
+            }
+
+workflows:
+  - name: CI
+    jobs:
+      - name: build
+        steps:
+          - name: Install Dependencies
+            report: Check if syntax in the dependency file is correct.
+          - name: Check Code Formatting
+            report: The code formatting check has failed. Run `flutter format --set-exit-if-changed lib` and remove the formatting issue.
+      - name: test
+        steps:
+          - name: Run Unit Tests
+            report: Some unit tests have failed. Please review the test output and fix the failing tests.
+  - name: Deploy
+    jobs:
+      - name: deploy-to-prod
+        steps:
+          - name: Deploy
+            report: Deployment failed. Ensure all secrets are set and the server is reachable.
