@@ -2491,4 +2491,16 @@
   <data name="_997" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\outbreaks_default\Paldea\997.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="_423_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outbreaks_default\Paldea\423-1.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_423" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outbreaks_default\Paldea\423.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_423_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outbreaks_default\Paldea\423-0.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dlc2_900" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outbreaks_default\Blueberry\dlc2-900.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

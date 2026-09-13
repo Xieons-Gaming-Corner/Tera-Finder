@@ -19,7 +19,7 @@ namespace TeraFinder.Core.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1246,6 +1246,36 @@ namespace TeraFinder.Core.Properties {
         internal static byte[] _422_1 {
             get {
                 object obj = ResourceManager.GetObject("_422_1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] _423 {
+            get {
+                object obj = ResourceManager.GetObject("_423", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] _423_0 {
+            get {
+                object obj = ResourceManager.GetObject("_423_0", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] _423_1 {
+            get {
+                object obj = ResourceManager.GetObject("_423_1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -7716,6 +7746,16 @@ namespace TeraFinder.Core.Properties {
         internal static byte[] dlc2_89_1 {
             get {
                 object obj = ResourceManager.GetObject("dlc2_89_1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] dlc2_900 {
+            get {
+                object obj = ResourceManager.GetObject("dlc2_900", resourceCulture);
                 return ((byte[])(obj));
             }
         }
