@@ -1,7 +1,7 @@
 ## Xieon's Gaming Corner Public Archival Fork 
 [![Discord Widget](https://discord.com/api/guilds/829181609156411463/widget.png?style=banner2)](https://discord.gg/Xieon)
 
-* This fork is a public archival fork of TeraFinder - there's been no changes done by Xieon's Gaming Corner other than image compression, and data compression by Github action algorithms - this fork is kept as up to date as possible with the main branch 
+* This fork is a public archival fork of TeraFinder - there's been no changes done by Xieon's Gaming Corner other than image compression, and data compression by Github action algorithms - this fork is kept as up to date as possible with the main branch. As of https://github.com/Xieons-Gaming-Corner/Tera-Finder/releases/tag/10_14_2026_mirror pushes on main trigger builds and artifact uploads which will be made available in a release-
 
 ### XGC's Latest Release Build of Tera Finder:
 The latest TeraFinder release on XGC's Github is 06172025 - Starting with this release, after fixing issues with the workflow file, compiling can be done using Github Actions instead of needing to download, and compile the code yourself. I have included the artifacts created from the most recent release PR. There are now two zips being ``TeraFinder.Plugins.Zip`` and ``TeraFinder.Launcher.Zip`` with the release version appended to the end. 
